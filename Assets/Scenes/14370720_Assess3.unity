@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PacStudent: {fileID: 1237981134}
+  currentPos: 0
 --- !u!1 &1487563032
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,11 +678,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3915101598870032031, guid: 03a50082632f2d1409c865bc107f015b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 3915101598870032031, guid: 03a50082632f2d1409c865bc107f015b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.06
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3915101598870032031, guid: 03a50082632f2d1409c865bc107f015b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -714,6 +715,10 @@ PrefabInstance:
     - target: {fileID: 3915101598870032031, guid: 03a50082632f2d1409c865bc107f015b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898091561644587522, guid: 03a50082632f2d1409c865bc107f015b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
