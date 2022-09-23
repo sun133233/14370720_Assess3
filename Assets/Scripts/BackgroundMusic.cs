@@ -9,9 +9,9 @@ public class BackgroundMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(playSound());
+        StartCoroutine(playBM());
     }
-    IEnumerator playSound()
+    IEnumerator playBM()
     {
         GetComponent<AudioSource>().clip = BM_intro;
         GetComponent<AudioSource>().Play();
