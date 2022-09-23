@@ -130,8 +130,8 @@ TextureImporter:
       name: Ghost3_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 128
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -147,6 +147,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Ghost3_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c156f2a8886853446a7b446f0e88f093
+      internalID: -929015446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,6 +179,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Ghost3_2: -929015446
       Ghost3_0: -1990605676
       Ghost3_1: -236186901
   spritePackingTag: 
