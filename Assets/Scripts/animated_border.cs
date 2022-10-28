@@ -11,15 +11,27 @@ public class animated_border : MonoBehaviour
     float duration_a = 2.0f;
     float duration_b = 3f;
     float timeOut = 0.0f;
-    Vector3[] positions = { new Vector3(-31.0f, 17.0f, 0.0f), new Vector3(31.0f, 17f, 0.0f), new Vector3(31.0f, -17.0f, 0.0f),new Vector3(-31.0f, -17.0f, 0.0f) };
+    Vector3[] positions;
     public int currentPos;
+    public Vector2 Difference = new Vector2(130, 80);
     // Start is called before the first frame update
     void Start()
     {
-       
+        Vector2 camHW = new Vector2(Screen.width, Screen.height);
+        positions = new Vector3[]
+        {
+            new Vector3 (Difference.x,camHW.y-Difference.y),new Vector3(camHW.x-Difference.x,camHW.y-Difference.y),
+           new Vector3(camHW.x-Difference.x,Difference.y), new Vector3(Difference.x,Difference.y)
+        };
+        for (int i = 0; i < positions.Length; i++)
+        {
+            positions[i] = Camera.main.ScreenToWorldPoint(positions[i]);
+            positions[i].z = 0;
+        }
+
         PacStudent.transform.position = new Vector3(-31.0f, 17f, 0.0f);
         cherry.transform.position = new Vector3(-25.0f, 17f, 0.0f);
-        
+
     }
 
     // Update is called once per frame
