@@ -16,7 +16,7 @@ public class animated_border : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
         PacStudent.transform.position = new Vector3(-31.0f, 17f, 0.0f);
         cherry.transform.position = new Vector3(-25.0f, 17f, 0.0f);
         
