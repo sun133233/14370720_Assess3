@@ -1377,6 +1377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BM_intro: {fileID: 8300000, guid: 4ebd4eb3d2ce8a24caaa236fc35ec3bc, type: 3}
+  scoreText: {fileID: 756936390}
+  timeText: {fileID: 1348569396}
 --- !u!4 &1341596323
 Transform:
   m_ObjectHideFlags: 0

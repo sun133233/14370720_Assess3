@@ -6,18 +6,10 @@ public class MapEditor : MonoBehaviour
 {
     private void Reset()
     {
-        foreach (Transform item in transform)
+        GameObject[] obj= GameObject.FindGameObjectsWithTag("fish");
+        foreach (GameObject item in obj)
         {
-
-            if (item.name.Contains("sprite"))
-            {
-                item.gameObject.AddComponent<PolygonCollider2D>();
-            }
-            if (item.name.Contains("sprite_0"))
-            {
-                DestroyImmediate(item.gameObject.GetComponent<PolygonCollider2D>());
-            }
+            item.GetComponent<BoxCollider2D>().size = Vector2.one;
         }
-
     }
 }

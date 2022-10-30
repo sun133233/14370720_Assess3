@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - tel_2
+  - tel_1
+  - walk
+  - fish
+  - power
   layers:
   - Default
   - TransparentFX
@@ -12,7 +17,7 @@ TagManager:
   - Map
   - Water
   - UI
-  - 
+  - Entity
   - 
   - 
   - 
