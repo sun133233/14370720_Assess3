@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PacStudentController : MonoBehaviour
 {
+    private float dt = 1.0f;
     private float duration = 2.0f;
     private float speed = 3.0f;
     private Vector2 endPos;
@@ -11,11 +13,13 @@ public class PacStudentController : MonoBehaviour
     public Transform Pacman;
     private Vector2 currentPos;
     private Vector2 currentInput;
-    public AudioSource[] PacmanAudio = new AudioSource[2];
+    public AudioSource[] PacmanAudio = new AudioSource[3];
     private Animator PacController;
     private ParticleSystem dust;
-
+    public ParticleSystem wall;
     private bool isMove;
+    private int Score = 0;
+    public GameObject ScoreText;
 
     void Start()
     {
@@ -25,6 +29,7 @@ public class PacStudentController : MonoBehaviour
         PacController = GetComponent<Animator>();
         dust = GameObject.FindWithTag("Player").GetComponent<ParticleSystem>();
         StartCoroutine(Controller());
+        PacmanAudio[2].Stop();
     }
 
 
@@ -34,15 +39,32 @@ public class PacStudentController : MonoBehaviour
         {
             LastKey();
             RaycastHit2D hit = Physics2D.Raycast(Pacman.position, currentInput, 1);
-            if (hit.collider!=null&&hit.collider.tag=="Wall")
-            {
-                dust.Stop();
-                isMove = false;
+            if (hit.collider != null)
+           {
+                if (hit.collider != null && hit.collider.tag == "Wall")
+                {
+                    dust.Stop();
+                    wall.transform.position = currentPos;
+                    isMove = false;
+                    if (dt >= 1)
+                    {
+                        wall.Play();
+                        PacmanAudio[2].Play();
+                        dt = 0;
+                    }
+                }
+                else if (hit.collider.GetComponent<Teleport>())
+                {
+                    Teleport(hit.collider.GetComponent<Teleport>().TriggerEnter());
+                }
+                else
+                {
+                    StartMove();
+                }
             }
             else
             {
-                dust.Play();
-                isMove = true;
+                StartMove();
             }
 
 
@@ -56,8 +78,16 @@ public class PacStudentController : MonoBehaviour
                 {
                     Destroy(hit.collider.gameObject);
                     PacmanAudio[0].Play();
+                    Score += 10;
+                    PlayerPrefs.SetInt("SCORE", Score);
+
                 }
-                
+                else if (hit.collider.gameObject.name == "cherry(Clone)")
+                {
+                    Destroy(GameObject.Find("cherry(Clone)"));
+                    Score += 100;
+                    PlayerPrefs.SetInt("SCORE", Score);
+                }
                 yield return new WaitForSeconds(1/speed);
             }
             else
@@ -68,7 +98,12 @@ public class PacStudentController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dt < 1)
+        {
+            dt += Time.deltaTime;
+        }
         Move();
+        ScoreText.GetComponent<Text>().text = Score.ToString();
     }
 
 
@@ -110,5 +145,18 @@ public class PacStudentController : MonoBehaviour
         endPos = (Vector2)transform.position + currentInput;
         duration = 0;
 
+    }
+    private void StartMove()
+    {
+        dust.Play();
+        wall.Stop();
+        isMove = true;
+    }
+    public void Teleport(Vector3 pos)
+    {
+        transform.position = pos;
+        currentInput = Vector2.zero;
+        dust.Stop();
+        isMove = false;
     }
 }
